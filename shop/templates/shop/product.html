@@ -1,0 +1,239 @@
+    {% extends 'shop/basic.html' %}
+    {% load custom_tags %}
+    {% load static %}
+
+{% block title %}
+    <title> Products || Kosmeticas </title>
+{% endblock %}
+    {%block body%}
+        <!-- Breadcrumb Area Start Here -->
+            <div class="breadcrumb-area">
+                <div class="container">
+                    <ol class="breadcrumb breadcrumb-list">
+                        <li class="breadcrumb-item">
+                            <a href="/shop/">Home</a>
+                        </li>
+                        <li class="breadcrumb-item active">shop</li>
+                    </ol>
+                </div>
+            </div>
+            <!-- Breadcrumb Area End Here -->
+            <!-- Shop Page Start -->
+            <div class="main-shop-page dark-white-bg ptb-80">
+                <div class="container">
+                    <!-- Row End -->
+                    <div class="row">
+                        <!-- Sidebar Shopping Option Start -->
+                        <div class="col-lg-3 order-2 order-lg-1 mt-all-30">
+                            <div class="sidebar shop-sidebar">
+
+                                <!-- Sidebar Categorie Start -->
+                                <div class="sidebar-categorie mb-30">
+                                    <h3 class="sidebar-title"> filter by categories</h3>
+                                    <ul class="sidbar-style">
+                                        {% for cat , co in catagery|zip:cat_count %}
+                                        <li class="form-check">
+                                            <a href="/shop/search/?search={{ cat }}" class="form-check-label" for="camera">{{ cat }}<span>({{ co }})</span></a>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                                <!-- Sidebar Categorie Start -->
+
+                                <!-- Sidebar Categorie Start -->
+                                <div class="sidebar-categorie mb-30">
+                                    <h3 class="sidebar-title">filter by Brands</h3>
+                                    <ul class="sidbar-style">
+                                        {% for brand, co in brands|zip:brand_count  %}
+                                        <li class="form-check">
+                                            <a href="/shop/search/?search={{ brand }}" class="form-check-label">{{ brand }} <span>({{ co }})</span></a>
+                                        </li>
+                                        {% endfor %}
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Sidebar Shopping Option End -->
+                        <!-- Product Categorie List Start -->
+                        <div class="col-lg-9 order-1 order-lg-2">
+                            <!-- Grid & List View Start -->
+
+                            <!-- Grid & List View End -->
+                            <div class="shop-area mb-all-40">
+                                <!-- Grid & List Main Area End -->
+
+                                    <div id="grid-view" class="tab-pane fade show active">
+                                        <div class="row border-hover-effect ">
+                                            {% for product, image in products|zip:images %}
+                                            <div class="col-lg-4 col-md-4 col-sm-6 col-6">
+                                                <!-- Single Product Start -->
+                                                <div class="single-elomous-product">
+                                                    <!-- Product Image Start -->
+                                                    <div class="pro-img">
+                                                        <a href="/shop/products/{{ product.id }}">
+                                                            <img style="height: 280px" class="primary-img" id="imagepr{{ product.id }}" src="/media/{{  image.image1}}" alt="single-product">
+                                                            <img style="height: 280px" class="secondary-img" src="/media/{{  image.image2}}" alt="single-product">
+                                                        </a>
+                                                        <div class="pro-actions-link">
+
+                                                            <a href="/shop/products/{{ product.id }}" title="Quick View">
+                                                                <span class="icon icon-Eye"></span>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Product Image End -->
+                                                    <!-- Product Content Start -->
+                                                    <div class="pro-content">
+                                                        <div class="pro-info">
+
+                                                            <h4>
+                                                                <a href="/shop/products/{{ product.id }}"><b><span id="namepr{{product.id}}">{{  product.name }}</span></b></a>
+                                                            </h4>
+                                                            <p>
+                                                                <a href="/shop/products/{{ product.id }}">{{  product.desc|slice:"0:59"}} </a>
+                                                            </p>
+                                                            <p>
+                                                                <span class="special-price"><b style="color: #002752">Rs. </b><span id="pricepr{{product.id}}">{{product.price}}</span></span>
+                                                                {% if  product.old_price  %}<del class="old-price">{{ product.old_price }}</del>{% endif %}
+                                                            </p>
+                                                        </div>
+                                                        <div class="pro-add-cart">
+                                                            <span id="divpr{{product.id}}" class="divpr" >
+                                                            <button  id = "pr{{ product.id }}" class="btn btn-primary cart " title="Add to Cart">Add To Cart</button>
+                                                            </span>
+                                                        </div>
+
+                                                    </div>
+                                                    <!-- Product Content End -->
+                                                    {% if product.old_price %}<span class="sticker-sale">{{ product.price|cal_percentage:product.old_price }}% </span>
+                                                    {% else %}<span class="sticker-new">new</span>{% endif %}
+                                                </div>
+                                                <!-- Single Product End -->
+                                            </div>
+
+                                            {% endfor %}
+                                        </div>
+                                        <!-- Row End -->
+                                    </div>
+
+                                    <!-- #list view End -->
+
+                                <!-- Grid & List Main Area End -->
+                            </div>
+                            <!-- Shop Breadcrumb Area Start -->
+                            <div class="shop-breadcrumb-area border-default">
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-4 col-sm-5">
+                                        <span class="show-items">Showing {{ products.number|cal_page:9 }}-{% if products.number == products.paginator.num_pages %}{{ products.paginator.count }}{% else %}{{ products.number|multiply:9 }}{% endif %} of {{ products.paginator.count }} item(s) </span>
+                                    </div>
+                                    <div class="col-lg-8 col-md-8 col-sm-7">
+                                        <ul class="pagination text-center">
+                                           {% if products.has_previous %}
+                                              <li class="page-item">
+                                              <a class="page-link" href="?page=1">
+                                                  First</a>
+                                              </li>
+                                               <li class="page-item">
+                                                <a class="page-link" href="?page={{ products.previous_page_number }}">
+                                                    Previous</a>
+                                               </li>
+                                           {% endif %}
+                                            {% for num in products.paginator.page_range %}
+                                             {% if products.number == num %}
+                                              <li class="page-item active">
+                                                <span class="page-link">
+                                                      {{ num }}
+                                                    <span class="sr-only">(current)</span>
+                                                </span>
+                                              </li>
+                                             {% elif num > products.number|add:-2 and num < products.number|add:2 %}
+                                             <li class="page-item"><a class="page-link">{{ num }}</a></li>
+                                             {% endif %}
+                                           {% endfor %}
+                                         {% if products.has_next %}
+                                             <li class="page-item">
+                                             <a class="page-link" href="?page={{ products.next_page_number }}">Next</a>
+                                            </li>
+                                             <li class="page-item">
+                                                <a class="page-link" href="?page={{ products.paginator.num_pages }}">End
+                                                </a>
+                                                 </li>
+
+                                        {% endif %}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Shop Breadcrumb Area End -->
+                        </div>
+                        <!-- product Categorie List End -->
+                    </div>
+                    <!-- Row End -->
+                </div>
+                <!-- Container End -->
+            </div>
+            <!-- Shop Page End -->
+
+    {% endblock %}
+    {% block js %}
+
+        updateCart(cart);
+       // after click on cart button increment/decrement cart value
+        $('.divpr').on('click', 'button.cart', function(){
+            var idstr = this.id.toString();
+            //console.log(idstr);
+            if (cart[idstr] !== undefined){
+                cart[idstr][0] = cart[idstr][0]+1;
+            }
+            else{
+                var qty=1;
+                var product_image = document.getElementById("image"+idstr).getAttribute("src");
+                var product_name = document.getElementById("name"+idstr).innerHTML;
+                var price=document.getElementById("price"+idstr).innerHTML;
+                cart[idstr] = [qty, product_name, parseInt(price), product_image];
+            }
+            //console.log(cart);
+            updateCart(cart);
+            });
+
+
+        function updateCart(cart){
+             var sum = 0;
+            for ( var item in cart ){
+                sum=sum+cart[item][0];
+                 if(document.getElementById('div'+item) !== null){
+                document.getElementById('div' + item).innerHTML = "<button id='minus" + item + "' class='btn btn-primary minus'>-</button> <mark><span id='val" + item + "'>" + cart[item][0] + "</span></mark><button id='plus" + item + "' class='btn btn-primary plus'> + </button>";
+                }
+            }
+            localStorage.setItem('cart', JSON.stringify(cart));
+            document.getElementById('total-pro').innerHTML = sum;
+            console.log(cart);
+            updatePopover(cart);
+        }
+
+        // If plus or minus button is clicked, change the cart as well as the display value
+        $('.divpr').on("click", "button.minus", function() {
+            a = this.id.slice(7, );
+            cart['pr' + a][0] = cart['pr' + a][0] - 1;
+            cart['pr' + a][0] = Math.max(0, cart['pr' + a][0]);
+            if (cart['pr' + a][0] == 0){
+                document.getElementById('divpr' + a ).innerHTML = '<button id="pr' + a + '" class="btn btn-primary cart">Add To Cart</button>'
+                delete cart['pr' + a];
+            }
+            else
+            {
+                document.getElementById('valpr' + a).innerHTML = cart['pr' + a][0];
+            }
+            updateCart(cart);
+        });
+        $('.divpr').on("click", "button.plus", function() {
+            a = this.id.slice(6, );
+            cart['pr' + a][0] = cart['pr' + a][0] + 1;
+            document.getElementById('valpr' + a).innerHTML = cart['pr' + a][0];
+            updateCart(cart);
+        });
+
+
+
+    {% endblock %}

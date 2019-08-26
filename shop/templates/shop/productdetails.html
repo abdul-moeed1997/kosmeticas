@@ -1,0 +1,212 @@
+{% extends 'shop/basic.html' %}
+{% load static %}
+{% load custom_tags %}
+{% block title %}
+    <title> Product Details || Kosmeticas </title>
+{% endblock %}
+{%block body%}
+
+    <!-- Breadcrumb Area Start Here -->
+        <div class="breadcrumb-area">
+            <div class="container">
+                <ol class="breadcrumb breadcrumb-list">
+                    <li class="breadcrumb-item"><a href="/shop">Home</a></li>
+                    <li class="breadcrumb-item active">Product Details</li>
+                </ol>
+            </div>
+        </div>
+        <!-- Breadcrumb Area End Here -->
+        <!-- Product Thumbnail Start -->
+        <div class="main-product-thumbnail dark-white-bg ptb-80">
+            <div class="container">
+                <div class="row">
+                    <!-- Main Thumbnail Image Start -->
+                    <div class="col-md-6 mb-all-40">
+                        <!-- Thumbnail Large Image start -->
+                        <div class="tab-content">
+                            <div id="thumb1" class="tab-pane fade show active">
+                                <a data-fancybox="images" href="/media/{{ image.image1 }}"><img style="height: 480px" id = "imagepr{{ product.id }}" src="/media/{{ image.image1 }}" alt="product-view"></a>
+                            </div>
+                            <div id="thumb2" class="tab-pane fade">
+                                <a data-fancybox="images" href="/media/{{ image.image2 }}"><img style="height: 480px" src="/media/{{ image.image2 }}" alt="product-view"></a>
+                            </div>
+                            <div id="thumb3" class="tab-pane fade">
+                                <a data-fancybox="images" href="/media/{{ image.image3 }}"><img style="height: 480px" src="/media/{{ image.image3 }}" alt="product-view"></a>
+                            </div>
+                            <div id="thumb4" class="tab-pane fade">
+                                <a data-fancybox="images" href="/media/{{ image.image1 }}"><img style="height: 480px" src="/media/{{ image.image3 }}" alt="product-view"></a>
+                            </div>
+                            <div id="thumb5" class="tab-pane fade">
+                                <a data-fancybox="images" href="/media/{{ image.image2 }}"><img style="height: 480px" src="/media/{{ image.image3 }}" alt="product-view"></a>
+                            </div>
+                        </div>
+                        <!-- Thumbnail Large Image End -->
+                        <!-- Thumbnail Image End -->
+                        <div class="product-thumbnail">
+                            <div class="thumb-menu owl-carousel nav tabs-area" role="tablist">
+                                <a class="active" data-toggle="tab" href="#thumb1"><img src="/media/{{ image.image1 }}" alt="product-thumbnail"></a>
+                                <a data-toggle="tab" href="#thumb2"><img src="/media/{{ image.image2 }}" alt="product-thumbnail"></a>
+                                <a data-toggle="tab" href="#thumb3"><img src="/media/{{ image.image3 }}" alt="product-thumbnail"></a>
+                                <a data-toggle="tab" href="#thumb4"><img src="/media/{{ image.image1 }}" alt="product-thumbnail"></a>
+                                <a data-toggle="tab" href="#thumb5"><img src="/media/{{ image.image2 }}" alt="product-thumbnail"></a>
+                            </div>
+                        </div>
+                        <!-- Thumbnail image end -->
+                    </div>
+                    <!-- Main Thumbnail Image End -->
+                    <!-- Thumbnail Description Start -->
+                    <div class="col-md-6">
+                        <div class="thubnail-desc ">
+                            <h3 class="product-header" id="namepr{{ product.id }}">{{ product.name }}</h3>
+
+                            <div class="pro-thumb-price mt-20">
+                                <span class="special-price">Rs.<span id="pricepr{{ product.id }}">{{ product.price }}</span></span>{% if product.old_price %}<p><del class="old-price">{{ product.old_price }}</del></p>{% endif %}
+                            </div>
+                            <p class="pro-desc-details"> {{ product.desc }}</p>
+                            <ul class="pro-list-features">
+                                <li>Brands <a href="#">{{ product.brand }}</a></li>
+                                <li>Category <a href="#">{{ product.catagory }}</a></li>
+                                <li>Discount <a href="#"> {% if product.old_price %}{{ product.price|cal_percentage:product.old_price }}% off
+                                                {% else %}0% off{% endif %}</a></li>
+                                {% if product.quantity %}<li>Availability: <span style="color: dodgerblue">In Stock</span></li>{% else %}
+                                <li>Availability: <span style="color: tomato">Not in Stock</span></li>{% endif %}
+                            </ul>
+                            <ul class="d-flex flex-wrap mt-20" >
+                                   {% if product.quantity %}
+                                        <span id="divpr{{product.id}}" class="divpr" >
+                                       <li>
+                                        <button id = "pr{{ product.id }}" type = "submit" class="pro-cart cart" >add to cart</button>
+                                    </li>
+                                        </span>
+                                   {% else %}
+                                       <button type="submit"  class ="btn btn-dark" disabled>add to cart</button>
+                                    {% endif %}
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Thumbnail Description End -->
+                </div>
+                <!-- Row End -->
+            </div>
+            <!-- Container End -->
+        </div>
+        <!-- Product Thumbnail End -->
+        <!-- Product Thumbnail Description Start -->
+
+        <!-- Product Thumbnail Description End -->
+        <!-- SmartWatch Product Start Here -->
+        <div class="amazing-pro dark-white-bg ptb-80">
+            <div class="container">
+                <!-- Section Title Start Here -->
+                <div class="section-title">
+                    <span>Related Products</span>
+                    <h2>More from {{ product.brand }}</h2>
+                </div>
+                <!-- Section Title End Here -->
+                <!-- SmartWatch Product Activation Start Here -->
+                <div class="feature-pro-active owl-carousel amazing-pro">
+                    <!-- Single Product Start -->
+                    {% for product, image in r_products|zip:r_images %}
+                    <div class="single-elomous-product">
+                                                <!-- Product Image Start -->
+                                                <div class="pro-img">
+                                                    <a href="/shop/products/{{ product.id }}">
+                                                        <img style="height: 280px" class="primary-img" src="/media/{{  image.image1}}" alt="single-product">
+                                                        <img style="height: 280px" class="secondary-img" src="/media/{{  image.image2}}" alt="single-product">
+                                                    </a>
+
+                                                </div>
+                                                <!-- Product Image End -->
+                                                <!-- Product Content Start -->
+                                                <div class="pro-content">
+                                                    <div class="pro-info">
+
+                                                        <h4>
+                                                            <a href="/shop/products/{{ product.id }}"><b><span >{{  product.name }}</span></b></a>
+                                                        </h4>
+                                                        <p>
+                                                            <span class="special-price"><b style="color: #002752">Rs. </b><span>{{product.price}}</span></span>
+                                                            {% if  product.old_price  %}<del class="old-price">{{ product.old_price }}</del>{% endif %}
+                                                        </p>
+                                                    </div>
+                                                 <div class="pro-add-cart">
+                                                     <a href="/shop/products/{{ product.id }}" title="Quick View">Quick View</a>
+                                                 </div>
+
+                                                </div>
+                                                <!-- Product Content End -->
+                                                {% if product.old_price %}<span class="sticker-sale">{{ product.price|cal_percentage:product.old_price }}% </span>
+                                                {% else %}<span class="sticker-new">new</span>{% endif %}
+                                            </div>
+                    {% endfor %}
+                    <!-- Single Product End -->
+
+                </div>
+                <!-- SmartWatch Product Activation End Here -->
+            </div>
+        </div>
+        <!-- SmartWatch Product End Here -->
+
+{% endblock %}
+{% block js %}
+
+    updateCart(cart);
+   // after click on cart button increment/decrement cart value
+    $('.divpr').on('click', 'button.cart', function(){
+        var idstr = this.id.toString();
+        console.log(idstr);
+        if (cart[idstr] !== undefined){
+            cart[idstr][0] = cart[idstr][0]+1;
+        }
+        else{
+            var qty=1;
+            var product_image = document.getElementById("image"+idstr).getAttribute("src");
+            var product_name = document.getElementById("name"+idstr).innerHTML;
+            var price=document.getElementById("price"+idstr).innerHTML;
+            cart[idstr] = [qty, product_name, parseInt(price), product_image];
+        }
+        console.log(cart);
+        updateCart(cart);
+        });
+
+
+
+     function updateCart(cart){
+         var sum = 0;
+        for ( var item in cart ){
+            sum=sum+cart[item][0];
+            if(document.getElementById('div'+item) !== null){
+                document.getElementById('div' + item).innerHTML = "<button id='minus" + item + "' class='btn btn-primary minus'>-</button><span id='val" + item + "'>" + cart[item][0] + "</span><button id='plus" + item + "' class='btn btn-primary plus'> + </button>";
+        }
+        }
+        localStorage.setItem('cart', JSON.stringify(cart));
+        document.getElementById('total-pro').innerHTML = sum;
+        console.log(cart);
+        updatePopover(cart);
+    }
+
+    // If plus or minus button is clicked, change the cart as well as the display value
+    $('.divpr').on("click", "button.minus", function() {
+        a = this.id.slice(7, );
+        cart['pr' + a][0] = cart['pr' + a][0] - 1;
+        cart['pr' + a][0] = Math.max(0, cart['pr' + a][0]);
+        if (cart['pr' + a][0] == 0){
+            document.getElementById('divpr' + a ).innerHTML = '<button id="pr' + a + '" class="pro-cart cart">Add To Cart</button>'
+            delete cart['pr' + a];
+        }
+        else
+        {
+            document.getElementById('valpr' + a).innerHTML = cart['pr' + a][0];
+        }
+        updateCart(cart);
+    });
+    $('.divpr').on("click", "button.plus", function() {
+        a = this.id.slice(6, );
+        cart['pr' + a][0] = cart['pr' + a][0] + 1;
+        document.getElementById('valpr' + a).innerHTML = cart['pr' + a][0];
+        updateCart(cart);
+    });
+
+
+{% endblock %}

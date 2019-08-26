@@ -1,0 +1,177 @@
+{% extends 'shop/basic.html' %}
+{% load static %}
+{% block title %}
+    <title> Checkout || Kosmeticas </title>
+{% endblock %}
+{%block body%}  
+
+ <!-- Breadcrumb Area Start Here -->
+        <div class="breadcrumb-area">
+            <div class="container">
+                <ol class="breadcrumb breadcrumb-list">
+                    <li class="breadcrumb-item"><a href="/shop">Home</a></li>
+                    <li class="breadcrumb-item active">Checkout</li>
+                </ol>
+            </div>
+        </div>
+        <!-- Breadcrumb Area End Here -->
+        <!-- coupon-area start -->
+
+        <!-- coupon-area end -->
+        <!-- checkout-area start -->
+        <div class="checkout-area white-bg pb-80">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="checkbox-form mb-sm-40 mt-5">
+                            <h3>Billing Details</h3>
+                           <form action="/shop/checkout/" method="POST"> {% csrf_token %}
+                            <div class="row">
+                                <input type="hidden" id="itemJson" name="itemJson">
+                                <div class="col-md-6">
+                                    <div class="checkout-form-list mb-sm-30">
+                                        <label>First Name <span class="required">*</span></label>
+                                        <input type="text" required id="fname" name="fname" placeholder="" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="checkout-form-list mb-30">
+                                        <label>Last Name <span class="required">*</span></label>
+                                        <input type="text" required id="lname" name="lname" placeholder="" />
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="checkout-form-list">
+                                        <label>Address <span class="required">*</span></label>
+                                        <input type="text" required  id="address1" name="address1" placeholder="Street address" />
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="checkout-form-list mtb-30">
+                                        <input type="text" id="address2" name="address2" placeholder="Apartment, suite, unit etc. (optional)" />
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="checkout-form-list mb-30">
+                                        <label>Town / City <span class="required">*</span></label>
+                                        <input type="text" required id="city" name="city" placeholder="Town / City" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="checkout-form-list mb-30">
+                                        <label>State <span class="required">*</span></label>
+                                        <input type="text" required  id="state" name="state" placeholder="" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="checkout-form-list mb-30">
+                                        <label>Postcode / Zip <span class="required">*</span></label>
+                                        <input type="text" required id="postcode" name="postcode" placeholder="Postcode / Zip" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="checkout-form-list mb-30">
+                                        <label>Email Address <span class="required">*</span></label>
+                                        <input type="email" required id="email" name="email" placeholder="" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="checkout-form-list mb-30">
+                                        <label>Phone  <span class="required">*</span></label>
+                                        <input type="number"  required id="phone" name="phone" placeholder="03xxxx..." />
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Place Order</button>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="your-order">
+                            <h3>Your order</h3>
+                            <div class="your-order-table table-responsive">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th class="product-name">Product</th>
+                                            <th class="product-total">Total</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody id="tbody">
+
+                                    </tbody>
+
+                                    <tfoot>
+
+                                        <tr class="order-total">
+                                            <th>Order Total</th>
+                                            <td><span class=" total amount" id="totalPrice"></span>
+                                            </td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                                <div class="panel-group mt-3" id="accordion">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h6 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" style="color: darkred; font-style:italic;">
+            Important Note*</a>
+          </h6>
+        </div>
+        <div id="collapse1" class="panel-collapse collapse in">
+            <div class="panel-body"><p>Delivery Charges <b>Rs.200</b> will be charged within Lahore and <b>Rs.500</b> will be charged outside Lahore.</p></div>
+        </div>
+      </div>
+      </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- checkout-area end -->
+
+{%endblock%}
+{% block js %}
+    totalPrice=0;
+if ($.isEmptyObject(cart)) {
+    //if object is empty
+    mystr = `<h5 style="color:red;">Your cart is empty, please add some items to your cart before checking out!</h5>`
+    $('#tbody').append(mystr);
+} else {
+    for (item in cart) {
+        let name = cart[item][1];
+        let qty = cart[item][0];
+        let itemPrice= cart[item][2];
+        totalPrice = totalPrice + qty * itemPrice;
+
+        mystr = `<tr class="cart_item">
+                    <td class="product-name">
+                       ${name} <span class="product-quantity"> × ${qty}</span>
+                    </td>
+                    <td class="product-total">
+                      <span class="amount">Rs.${itemPrice}</span>
+                    </td>
+                  </tr>`
+            $('#tbody').append(mystr);
+    }
+
+}
+document.getElementById('totalPrice').innerHTML = `Rs.${totalPrice}`;
+$('#itemJson').val(JSON.stringify(cart));
+{% if Thank %}
+    Swal.fire({
+  type: 'success',
+  title: 'Thanks for placing order',
+    text: 'Use this id: {{ id }} for tracking your order.',
+}).then(function(){
+    console.log("hello");
+    localStorage.clear();
+    document.location = "/shop";
+    });
+
+{% endif %}
+
+{% endblock %}

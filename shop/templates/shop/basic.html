@@ -1,0 +1,478 @@
+{% load static %}
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+
+<!-- Mirrored from preview.hasthemes.com/elomus-v5/checkout.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Aug 2019 03:47:50 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    {% block title %}{% endblock %}
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+<!-- Optional: include a polyfill for ES6 Promises for IE11 and Android browser -->
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="{% static 'shop/img/favicon.ico' %}">
+    <!-- Fontawesome css -->
+    <link rel="stylesheet" href="{% static 'shop/css/font-awesome.min.css' %}">
+    <!-- Animate css -->
+    <link rel="stylesheet" href="{% static 'shop/css/animate.css' %}">
+    <!-- Stroke Gap Icon css -->
+    <link rel="stylesheet" href="{% static 'shop/css/stroke-gap.css' %}">
+    <!-- Nice select css -->
+    <link rel="stylesheet" href="{% static 'shop/css/nice-select.css' %}">
+    <!-- Jquery fancybox css -->
+    <link rel="stylesheet" href="{% static 'shop/css/jquery.fancybox.css' %}">
+    <!-- Jquery ui price slider css -->
+    <link rel="stylesheet" href="{% static 'shop/css/jquery-ui.min.css' %}">
+    <!-- Meanmenu css -->
+    <link rel="stylesheet" href="{% static 'shop/css/meanmenu.min.css' %}">
+    <!-- Owl carousel css -->
+    <link rel="stylesheet" href="{% static 'shop/css/owl.carousel.min.css' %}">
+    <!-- Bootstrap css -->
+    <link rel="stylesheet" href="{% static 'shop/css/bootstrap.min.css' %}">
+    <!-- Custom css -->
+    <link rel="stylesheet" href="{% static 'shop/css/default.css' %}">
+    <!-- Main css -->
+    <link rel="stylesheet" href="{% static 'shop/style.css' %}">
+    <!-- Responsive css -->
+    <link rel="stylesheet" href="{% static 'shop/css/responsive.css' %}">
+
+    <!-- Modernizer js -->
+    <script src="{% static 'shop/js/vendor/modernizr-3.5.0.min.js' %}"></script>
+
+</head>
+
+<body>
+    <!--[if lte IE 9]>
+		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+	<![endif]-->
+
+    <!-- Main Wrapper Start Here -->
+    <div class="wrapper">
+        <!-- Header Area Start Here -->
+        <header class="breadcrumb-bg header-area padding-area header-sticky">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <!-- Logo Start -->
+                    <div class="col-xl-2 col-lg-2 col-6">
+                        <div class="logo">
+                            <a href="/shop">
+                                <h3 style="color: ghostwhite; font-weight: bolder; font-family: Ebrima">Kosmeticas</h3>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Logo End -->
+                    <!-- Menu Area Start Here -->
+                    <div class="col-xl-8 col-lg-8 d-none d-lg-block">
+                        <nav>
+                            <ul class="header-menu-list text-center">
+                                <li class="active">
+                                    <a href="/shop">home</a>
+                                </li>
+                                <li>
+                                    <a class="drop-icon" href="/shop/products">All Products</a>
+                                    <!--  Mega-Menu Start -->
+                                    <ul class="ht-dropdown megamenu">
+                                        <!-- Single Column Start -->
+                                        <li>
+                                            <ul>
+                                                <li class="menu-tile"><b> Men's </b></li>
+                                                <li>
+                                                    <a href="/shop/search/?search=Shampoo">Shampoo</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/shop/search/?search=oil">Oil</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/shop/search/?search=Wax">Wax</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/shop/search/?search=cream">Cream</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/shop/search/?search=Lotion">Lotion</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <!-- Single Column End -->
+                                        <!-- Single Column Start -->
+                                        <li>
+                                            <ul>
+                                                <li class="menu-tile"><b>Women's</b></li>
+                                                <li>
+                                                    <a href="/shop/search/?search=Shampoo">Shampoo</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/shop/search/?search=conditioner">Conditioner</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/shop/search/?search=oil">Oil</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/shop/search/?search=srub">Srub</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/shop/search/?search=cream">Cream</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <!-- Single Column End -->
+                                        <!-- Single Column Start -->
+                                        <li>
+                                            <ul>
+                                                <li class="menu-tile"><b>Hair Styling</b></li>
+                                                <li>
+                                                    <a href="/shop/search/?search=hair spray">Hair Spray</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/shop/search/?search=color">Hair Color</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/shop/search/?search=gel">GEL</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/shop/search/?search=wax">Wax</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/shop/search/?search=serum">Serum</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <!-- Single Column End -->
+                                        <!-- Single Column Start -->
+                                        <li>
+                                            <ul>
+                                                <li class="menu-tile"><b>Body Care</b></li>
+                                                <li>
+                                                    <a href="/shop/search/?search=body lotion">Body Lotion</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/shop/search/?search=cream">Creams</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/shop/search/?search=face wash">Face Wash</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/shop/search/?search=hand wash">Hand Wash</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/shop/search/?search=mask">Mask</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <!-- Single Column End -->
+                                    </ul>
+                                    <!-- Mega-Menu End -->
+                                </li>
+                                <li><a href="/shop/tracker">Tracker</a></li>
+                                <li><a href="/shop/aboutUs">about us</a></li>
+                                <li><a href="/shop/contactUs">Contact us</a></li>
+                                
+
+                              
+                            </ul>
+                        </nav>
+                    </div>
+                    <!-- Menu Area End Here -->
+                    <!-- Cart Box Start Here -->
+                    <div class="col-xl-2 col-lg-2 col-6">
+                        <div class="cart-box">
+                            <ul>
+                                <!-- Search Box Start Here -->
+                                <li class="drodown-show">
+                                    <a href="#"><span class="icon icon-Search"></span></a>
+                                    <div class="dropdown categorie-search-box">
+                                        <form action="/shop/search" method="get">
+                                            <input type="text" id="search" name="search" placeholder="Search our catalog">
+                                            <button type="submit">
+                                                <span class="icon icon-Search"></span>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </li>
+                                <!-- Categorie Search Box End Here -->
+                                <li style="margin-right: 24px;" class="drodown-show">
+                                    <a href="#"><span class="icon icon-FullShoppingCart"></span><span class="total-pro" id="total-pro">0</span></a>
+                                    <ul class="dropdown cart-box-width">
+                                            <li>
+                                                <div id="pcart">
+                                                <!-- Cart Box Start -->
+
+                                                <!-- Cart Box End -->
+                                                </div>
+                                                <!-- Cart Footer Inner Start -->
+                                                <div class="cart-footer">
+                                                    <ul class="price-content">
+                                                        <li>Subtotal
+                                                            <span>Rs.<span id="subtotal">0.00</span></span>
+                                                        </li>
+                                                        <li>Shipping
+                                                            <span>Rs 0.00</span>
+                                                        </li>
+                                                        <li>Taxes
+                                                            <span>Rs 0.00</span>
+                                                        </li>
+                                                        <li>Total
+                                                             <span>Rs.<span id="total">0.00</span></span>
+                                                        </li>
+                                                    </ul>
+                                                    <div class="cart-actions text-center">
+                                                        <a class="cart-checkout" href="/shop/checkout">Checkout</a>
+                                                    </div>
+                                                    <div class="cart-actions text-center">
+                                                        <a class="cart-checkout"><button style="border:1px dimgrey; color: white; background: transparent;" onclick="clearCart()">Clear Cart</button></a>
+                                                    </div>
+                                                </div>
+                                                <!-- Cart Footer Inner End -->
+                                            </li>
+                                        </ul>
+                                </li>
+                    
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Cart Box End Here -->
+                </div>
+                <!-- Row End -->
+                <!-- Mobile Menu Start Here -->
+                <div class="mobile-menu d-block d-lg-none">
+                    <nav>
+                        <ul>
+                            <li>
+                                <a href="/shop">home</a>
+                            </li>
+                            <li>
+                                <a href="/shop/products" style="color: #1a8cff">All Products</a>
+                                <!-- Men Accessories Dropdown Start -->
+                                <ul class="submobile-mega-dropdown">
+                                    <li>
+                                        <a href="/shop/search/?search=male" style="color: #1a8cff">Men's</a>
+                                        <!-- Watches Dropdown Start -->
+                                        <ul>
+                                            <li>
+                                                    <a href="/shop/search/?search=Shampoo" style="color: #b3ffb3">Shampoo</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/shop/search/?search=oil" style="color: #b3ffb3">Oil</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/shop/search/?search=wax" style="color: #b3ffb3">Wax</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/shop/search/?search=cream" style="color: #b3ffb3">Cream</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/shop/search/?search=lotion" style="color: #b3ffb3">Lotion</a>
+                                                </li>
+                                        </ul>
+                                        <!-- Watches Dropdown End -->
+                                    </li>
+                                    <li>
+                                        <a href="/shop/search/?search='female'" style="color: #1a8cff">Women's</a>
+                                        <!-- Shoes Dropdown Start -->
+                                        <ul>
+                                            <li>
+                                                    <a href="/shop/search/?search=Shampoo" style="color: #b3ffb3">Shampoo</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/shop/search/?search=conditioner" style="color: #b3ffb3">Conditioner</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/shop/search/?search=oil" style="color: #b3ffb3">Oil</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/shop/search/?search=srub" style="color: #b3ffb3">Srub</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/shop/search/?search=cream" style="color: #b3ffb3">Cream</a>
+                                                </li>
+                                        </ul>
+                                        <!-- Shoes Dropdown End -->
+                                    </li>
+                                    <li>
+                                        <a href="/shop/search/?search=hair styling" style="color: #1a8cff">Hair Styling</a>
+                                        <!-- Bags Dropdown Start -->
+                                        <ul>
+                                             <li>
+                                                    <a href="/shop/search/?search=hair spray" style="color: #b3ffb3">Hair Spray</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/shop/search/?search=hair color" style="color: #b3ffb3">Hair Color</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/shop/search/?search=gel" style="color: #b3ffb3">GEL</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/shop/search/?search=wax" style="color: #b3ffb3">Wax</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/shop/search/?search=serum" style="color: #b3ffb3">Serum</a>
+                                                </li>
+                                        </ul>
+                                        <!-- Bags Dropdown End -->
+                                    </li>
+                                    <li>
+                                        <a href="/shop/search/?search=body care" style="color: #1a8cff">Body Care</a>
+                                        <!-- Bags Dropdown Start -->
+                                        <ul>
+                                           <li>
+                                                    <a href="/shop/search/?search=body lotion" style="color: #b3ffb3">Body Lotion</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/shop/search/?search=cream" style="color: #b3ffb3">Creams</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/shop/search/?search=face wash" style="color: #b3ffb3">Face Wash</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/shop/search/?search=hand wash" style="color: #b3ffb3">Hand Wash</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/shop/search/?search=mask" style="color: #b3ffb3">Mask</a>
+                                                </li>
+                                        </ul>
+                                        <!-- Bags Dropdown End -->
+                                    </li>
+                                </ul>
+                                <!-- Men Accessories Dropdown End -->
+                            </li>
+                            <li><a href="/shop/tracker">Tracker</a></li>
+                            <li><a href="/shop/aboutUs">About Us</a></li>
+                            <li><a href="/shop/contactUs">Contact Us</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <!-- Mobile Menu End Here -->
+            </div>
+            <!-- Container End -->
+        </header>
+        <!-- Header Area End Here -->
+        
+        {%block body%}{%endblock%}
+
+<footer>
+            <!-- Footer Bottom Start -->
+    <div class="footer-bottom light-blue-bg ptb-15">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="footer-copyright float-md-centre float-sm-centre ">
+                        <p>Copyright @ <a href="/shop/">Kosmeticas </a> All Rights Reserved</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="footer-bottom-right">
+                        <ul class="footer-social-icon float-md-centre float-sm-centre">
+                            <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+            <!-- Footer Bottom End -->
+</footer>
+        <!-- Footer Area End Here -->
+    </div>
+    <!-- Main Wrapper End Here -->
+
+    <!-- jquery 3.3.1 -->
+    <script src="{% static 'shop/js/vendor/jquery-3.3.1.min.js' %}"></script>
+    <!-- Mobile menu js -->
+    <script src="{% static 'shop/js/jquery.meanmenu.min.js' %}"></script>
+    <!-- ScrollUp js -->
+    <script src="{% static 'shop/js/jquery.scrollUp.js' %}"></script>
+    <!-- Fancybox js -->
+    <script src="{% static 'shop/js/jquery.fancybox.min.js' %}"></script>
+    <!-- Jquery nice select js -->
+    <script src="{% static 'shop/js/jquery.nice-select.min.js' %}"></script>
+    <!-- Jquery ui price slider js -->
+    <script src="{% static 'shop/js/jquery-ui.min.js' %}"></script>
+    <!-- Owl carousel -->
+    <script src="{% static 'shop/js/owl.carousel.min.js' %}"></script>
+    <!-- Bootstrap popper js -->
+    <script src="{% static 'shop/js/popper.min.js' %}"></script>
+    <!-- Bootstrap js -->
+    <script src="{% static 'shop/js/bootstrap.min.js' %}"></script>
+    <!-- Plugin js -->
+    <script src="{% static 'shop/js/plugins.js' %}"></script>
+    <!-- Main activaion js -->
+    <script src="{% static 'shop/js/main.js' %}"></script>
+
+     <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+
+</body>
+<script>
+
+// find out the cart item from the local storage
+if (localStorage.getItem('cart') == null)
+{
+    var cart = {}
+}
+else
+{
+    cart = JSON.parse(localStorage.getItem('cart'));
+    var sum = 0;
+    for (item in cart)
+    {
+        sum = sum + cart[item][0];
+    }
+    document.getElementById("total-pro").innerHTML = sum;
+    updatePopover(cart);
+}
+function updatePopover(cart) {
+        sum=0;
+        var popover="";
+        for (item in cart) {
+            popover = popover + "<div class='single-cart-box'>" +
+                "<div class='cart-img' >" +
+                "<a><img  src='" + cart[item][3] + "' alt='cart-image'></a>" +
+                "<span class='pro-quantity'>"+cart[item][0]+"x</span></div>" +
+                "<div class='cart-content'>" +
+                "<h6>"+ cart[item][1] +"</h6>" +
+                "<span class='cart-price'>"+ cart[item][2] +"</span>" +
+                "</div> </div>"
+        }
+        for (item in cart){
+            sum = sum + cart[item][0]* cart[item][2];
+        }
+            document.getElementById('subtotal').innerHTML=sum;
+            document.getElementById('total').innerHTML=sum;
+            document.getElementById('pcart').innerHTML=popover;
+
+    }
+ function clearCart() {
+
+     if (typeof updateCart === 'function') {
+        for (var item in cart) {
+            if(document.getElementById('div'+item) !== null){
+             document.getElementById('div' + item).innerHTML = '<button id="pr' + item + '" class="btn btn-primary cart">Add To Cart</button>'
+           }
+        }
+     }
+     localStorage.clear();
+     cart = {};
+     document.getElementById('total-pro').innerHTML = 0;
+     updatePopover(cart);
+}
+
+{% block js %} {% endblock %}
+
+
+</script>
+
+
+<!-- Mirrored from preview.hasthemes.com/elomus-v5/checkout.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Aug 2019 03:47:50 GMT -->
+</html>

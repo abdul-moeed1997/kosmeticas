@@ -1,0 +1,206 @@
+{% extends 'shop/basic.html' %}
+{% load static %}
+{% load custom_tags %}
+
+{% block title %}
+    <title> Home || Kosmeticas  </title>
+{% endblock %}
+{%block body%}
+        <!-- Slider Area Start -->
+        <div class="slider-area">
+            <!-- Slider Area Start Here -->
+            <div class="slider-activation owl-carousel">
+                <!-- Start Single Slide -->
+                <div class="slide align-center-left fullscreen animation-style-01 bg-image-1 ">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="slider-content">
+                                    <h6>New Freedom Blonde</h6>
+                                    <h1>Create the Ultimate<br> Blonde</h1>
+                                    <p>Every women has something divine about her. That inner fire inspired our new hair colors: rich, fierce, and sparkling..</p>
+                                    <div class="slide-btn small-btn">
+                                        <a href="/shop/products">Shop Now</a>
+                                    </div>
+                                </div>s
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Single Slide -->
+                <!-- Start Single Slide -->
+                <div class="slide align-center-left fullscreen animation-style-02 bg-image-2">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="slider-content">
+                                     <h6>Our new Color Collections of 2019</h6>
+                                    <h1>Live Your<br> Divinity</h1>
+                                    <p>Every women has something divine about her. That inner fire inspired our new hair colors: rich, fierce, and sparkling..</p>
+                                     <div class="slide-btn small-btn">
+                                        <a href="/shop/products">Shop Now</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Single Slide -->
+            </div>
+            <!-- Slider Area End Here -->
+        </div>
+        <!-- Slider Area End -->
+        
+        <!-- Drone Product Area Start Here -->
+        <div class="dron-product padding-area dark-white-bg ptb-80">
+            <div class="container-fluid">
+                <!-- Section Title Start Here -->
+                <div class="section-title">
+                    <span>Featured products</span>
+                    <h2>Women PRODUCTS</h2>
+                </div>
+                <!-- Section Title End Here -->
+
+                <div class="feature-pro-active-row">
+                    <div class="dron-product-active owl-carousel">
+
+                        {% for product , image in w_products|zip:w_images %}
+                             <!-- Single Product Start -->
+                         <div class="single-elomous-product">
+                                                <!-- Product Image Start -->
+                                                <div class="pro-img">
+                                                    <a href="/shop/products/{{ product.id }}">
+                                                        <img style="height: 280px" class="primary-img" id="imagepr{{ product.id }}" src="/media/{{  image.image1}}" alt="single-product">
+                                                        <img style="height: 280px" class="secondary-img" src="/media/{{  image.image2}}" alt="single-product">
+                                                    </a>
+                                                </div>
+                                                <!-- Product Image End -->
+                                                <!-- Product Content Start -->
+                                                <div class="pro-content">
+                                                    <div class="pro-info">
+
+                                                        <h4>
+                                                            <a href="/shop/products/{{ product.id }}"><b><span id="namepr{{product.id}}">{{  product.name }}</span></b></a>
+                                                        </h4>
+
+                                                        <p>
+                                                            <span class="special-price"><b style="color: #002752">Rs. </b><span id="pricepr{{product.id}}">{{product.price}}</span></span>
+                                                            {% if  product.old_price  %}<del class="old-price">{{ product.old_price }}</del>{% endif %}
+                                                        </p>
+                                                    </div>
+                                                    <div class="pro-add-cart">
+                                                     <a href="/shop/products/{{ product.id }}" title="Quick View"> Quick View</a>
+                                                 </div>
+
+                                                </div>
+                                                <!-- Product Content End -->
+                                                {% if product.old_price %}<span class="sticker-sale">{{ product.price|cal_percentage:product.old_price }}% </span>
+                                                {% else %}<span class="sticker-new">new</span>{% endif %}
+                                            </div>
+                        <!-- Single Product End -->
+                        {% endfor %}
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- Drone Product Area Start Here -->
+     <!-- Drone Product Area Start Here -->
+        <div class="dron-product padding-area dark-white-bg ptb-80">
+            <div class="container-fluid">
+                <!-- Section Title Start Here -->
+                <div class="section-title">
+                    <span>Featured products</span>
+                    <h2>MEN PRODUCTS</h2>
+                </div>
+                <!-- Section Title End Here -->
+
+                <div class="feature-pro-active-row">
+                    <div class="dron-product-active owl-carousel">
+
+                        {% for product , image in m_products|zip:m_images %}
+                             <!-- Single Product Start -->
+                        <div class="single-elomous-product">
+                                                <!-- Product Image Start -->
+                                                <div class="pro-img">
+                                                    <a href="/shop/products/{{ product.id }}">
+                                                        <img style="height: 280px" class="primary-img" id="imagepr{{ product.id }}" src="/media/{{  image.image1}}" alt="single-product">
+                                                        <img style="height: 280px" class="secondary-img" src="/media/{{  image.image2}}" alt="single-product">
+                                                    </a>
+
+                                                </div>
+                                                <!-- Product Image End -->
+                                                <!-- Product Content Start -->
+                                                <div class="pro-content">
+                                                    <div class="pro-info">
+
+                                                        <h4>
+                                                            <a href="/shop/products/{{ product.id }}"><b><span id="namepr{{product.id}}">{{  product.name }}</span></b></a>
+                                                        </h4>
+                                                        <p>
+                                                            <span class="special-price"><b style="color: #002752">Rs. </b><span id="pricepr{{product.id}}">{{product.price}}</span></span>
+                                                            {% if  product.old_price  %}<del class="old-price">{{ product.old_price }}</del>{% endif %}
+                                                        </p>
+                                                    </div>
+                                                 <div class="pro-add-cart">
+                                                     <a href="/shop/products/{{ product.id }}" title="Quick View">Quick View</a>
+                                                 </div>
+
+                                                </div>
+                                                <!-- Product Content End -->
+                                                {% if product.old_price %}<span class="sticker-sale">{{ product.price|cal_percentage:product.old_price }}% </span>
+                                                {% else %}<span class="sticker-new">new</span>{% endif %}
+                                            </div>
+                        <!-- Single Product End -->
+                        {% endfor %}
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- Drone Product Area Start Here -->
+         <!-- Marketing Area Start Here -->
+         <div class="dron-product padding-area dark-white-bg ptb-80">
+         <div class="marketing-area bg-image-5 ptb-80">
+            <div class="container">
+                <div class="marketing-text text-center">
+                    <h3>Shop Our Store</h3>
+                    <p>Our Shop sells 100% original Brand Products</p>
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- Marketing Area End Here -->
+    
+        <!-- Newsletter Area Start Here -->
+        <div class="newsletter-area pb-80">
+            <div class="container">
+                <!-- Section Title Start Here -->
+                <div class="section-title">
+                    <span>Newsletter</span>
+                    <h4><b>Sign up for Latest News about Sales and new Products</b></h4>
+                </div>
+                <!-- Section Title End Here -->
+                <div class="newsletter-box text-center">
+                    <form action="/shop/" method="post"> {% csrf_token %}
+                        <input class="subscribe" placeholder="Enter your email address here..." name="email" id="subscribe" type="text">
+                        <button type="submit" class="submit">subscribe!</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Newsletter Area End Here -->
+       {%endblock%}
+    {% block js %}
+ {% if Thank %}
+     Swal.fire({
+        type: 'success',
+        title: ':)',
+        text: 'Thanks for signing with us .',
+     }).then(function(){
+        document.location = "/shop";
+     });
+        {% endif %}
+{% endblock %}
