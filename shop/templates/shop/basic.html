@@ -194,7 +194,7 @@
                                     </div>
                                 </li>
                                 <!-- Categorie Search Box End Here -->
-                                <li style="margin-right: 24px;" class="drodown-show">
+                                <li style="margin-right: 14px;" class="drodown-show">
                                     <a href="#"><span class="icon icon-FullShoppingCart"></span><span class="total-pro" id="total-pro">0</span></a>
                                     <ul class="dropdown cart-box-width">
                                             <li>
@@ -436,9 +436,10 @@ function updatePopover(cart) {
         sum=0;
         var popover="";
         for (item in cart) {
+            id=item.slice(2,);
             popover = popover + "<div class='single-cart-box'>" +
                 "<div class='cart-img' >" +
-                "<a><img  src='" + cart[item][3] + "' alt='cart-image'></a>" +
+                "<a href='/shop/products/"+ id +"'><img  src='" + cart[item][3] + "' alt='cart-image'></a>" +
                 "<span class='pro-quantity'>"+cart[item][0]+"x</span></div>" +
                 "<div class='cart-content'>" +
                 "<h6>"+ cart[item][1] +"</h6>" +

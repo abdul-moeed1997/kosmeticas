@@ -677,9 +677,6 @@ p:last-child {
 }
 
 .dropdown {
-     overflow: auto;
-    overflow-y: scroll;
-	height:500px;
     border-radius: 15px;
     -webkit-box-shadow: 0 0 6px 1px rgba(0, 0, 0, 0.1);
     box-shadow: 0 0 6px 1px rgba(0, 0, 0, 0.1);
@@ -807,6 +804,9 @@ p:last-child {
 }
 
 .cart-box-width{
+	overflow: auto;
+    overflow-y: scroll;
+	height:500px;
     left: auto;
     right: 0;
     background: white;
