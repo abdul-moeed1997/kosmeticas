@@ -32,6 +32,71 @@ def index(request):
         thank = True
     return render(request, "shop/index.html", {'m_products': m_products, 'm_images': m_images, 'w_products': w_products, 'w_images': w_images, 'Thank': thank})
 
+def category(request):
+    categoryname = request.GET.get('category')
+    images=[]
+    brands = []
+    brand_count = []
+    catagery = []
+    cat_count = []
+    temp_products = Product.objects.all()
+    #products=[item for item in temp_products if searchResult(query,item)]
+    products = Product.objects.filter(catagory= categoryname)
+    if len(products) != 0:
+        for product in products:
+            i = product.image_set.all()
+            images.append(i[0])
+        for temp_product in temp_products:
+            if temp_product.brand not in brands:
+                brand = Product.objects.filter(brand=temp_product.brand)
+                brands.append(brand[0].brand)
+                brand_count.append(brand.count)
+            if temp_product.catagory not in catagery:
+                cat = Product.objects.filter(catagory=temp_product.catagory)
+                catagery.append(cat[0].catagory)
+                cat_count.append(cat.count)
+
+        p_paginator = Paginator(products, 9)
+        i_paginator = Paginator(images, 9)
+        page = request.GET.get('page')
+        products = p_paginator.get_page(page)
+        images = i_paginator.get_page(page)
+        return render(request, "shop/product.html", {'products': products, 'images': images, 'brands': brands, 'brand_count': brand_count, 'catagery': catagery, 'cat_count': cat_count})
+    else:
+         return render(request, "shop/404.html")
+
+def brand(request):
+    brandname = request.GET.get('brand')
+    images=[]
+    brands = []
+    brand_count = []
+    catagery = []
+    cat_count = []
+    temp_products = Product.objects.all()
+    #products=[item for item in temp_products if searchResult(query,item)]
+    products = Product.objects.filter(brand= brandname)
+    if len(products) != 0:
+        for product in products:
+            i = product.image_set.all()
+            images.append(i[0])
+        for temp_product in temp_products:
+            if temp_product.brand not in brands:
+                brand = Product.objects.filter(brand=temp_product.brand)
+                brands.append(brand[0].brand)
+                brand_count.append(brand.count)
+            if temp_product.catagory not in catagery:
+                cat = Product.objects.filter(catagory=temp_product.catagory)
+                catagery.append(cat[0].catagory)
+                cat_count.append(cat.count)
+
+        p_paginator = Paginator(products, 9)
+        i_paginator = Paginator(images, 9)
+        page = request.GET.get('page')
+        products = p_paginator.get_page(page)
+        images = i_paginator.get_page(page)
+        return render(request, "shop/product.html", {'products': products, 'images': images, 'brands': brands, 'brand_count': brand_count, 'catagery': catagery, 'cat_count': cat_count})
+    else:
+         return render(request, "shop/404.html")
 
 
 def search(request):

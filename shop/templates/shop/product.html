@@ -3,7 +3,7 @@
     {% load static %}
 
 {% block title %}
-    <title> Products || Kosmeticas </title>
+    <title> Products || PAK shopping mart </title>
 {% endblock %}
     {%block body%}
         <!-- Breadcrumb Area Start Here -->
@@ -33,7 +33,7 @@
                                     <ul class="sidbar-style">
                                         {% for cat , co in catagery|zip:cat_count %}
                                         <li class="form-check">
-                                            <a href="/shop/search/?search={{ cat }}" class="form-check-label" for="camera">{{ cat }}<span>({{ co }})</span></a>
+                                            <a href="/shop/category/?category={{ cat }}" class="form-check-label" for="camera">{{ cat }}<span>({{ co }})</span></a>
                                         </li>
                                         {% endfor %}
                                     </ul>
@@ -46,7 +46,7 @@
                                     <ul class="sidbar-style">
                                         {% for brand, co in brands|zip:brand_count  %}
                                         <li class="form-check">
-                                            <a href="/shop/search/?search={{ brand }}" class="form-check-label">{{ brand }} <span>({{ co }})</span></a>
+                                            <a href="/shop/brand/?brand={{ brand }}" class="form-check-label">{{ brand }} <span>({{ co }})</span></a>
                                         </li>
                                         {% endfor %}
 
